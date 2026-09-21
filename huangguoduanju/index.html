@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黄果短剧-全网热门短剧推荐与免费在线观看平台</title>
+    <meta name="description" content="黄果短剧为您提供最新、最热的短剧全集资源。涵盖都市、言情、悬疑、古装等多种题材，高清画质，一键免费观看，支持离线下载，随时随地畅享精彩剧情。">
+    <meta name="keywords" content="黄果短剧,短剧推荐,免费短剧,在线短剧,全集短剧">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #ff4757;
+            --secondary-color: #2f3542;
+            --accent-color: #ffa502;
+            --bg-color: #f1f2f6;
+            --card-bg: #ffffff;
+            --text-main: #2f3542;
+            --text-sub: #747d8c;
+            --border-radius: 12px;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            font-weight: 500;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .search-box {
+            position: relative;
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .search-box {
+                display: block;
+                width: 300px;
+            }
+            .search-box input {
+                width: 100%;
+                padding: 8px 15px;
+                border-radius: 20px;
+                border: 1px solid #dfe4ea;
+                background: #f1f2f6;
+                outline: none;
+            }
+            .search-box button {
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                background: none;
+                border: none;
+                cursor: pointer;
+                color: var(--text-sub);
+            }
+        }
+
+        .mobile-menu-btn {
+            display: block;
+            font-size: 24px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2f3542 0%, #1e272e 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 71, 87, 0.2) 0%, transparent 60%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #dfe4ea;
+            margin-bottom: 30px;
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(5px);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Main Layout */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 15px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .section-more {
+            color: var(--text-sub);
+            font-size: 0.9rem;
+        }
+
+        /* Grid System */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .grid-layout {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Card Styles */
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #e1e1e1;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .card-meta {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-tags {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .mini-tag {
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: #f1f2f6;
+            color: var(--text-sub);
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 71, 87, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover .play-icon {
+            opacity: 1;
+        }
+
+        /* Sidebar & Main Content */
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        @media (min-width: 992px) {
+            .content-wrapper {
+                grid-template-columns: 3fr 1fr;
+            }
+        }
+
+        /* Ranking List */
+        .ranking-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .ranking-item {
+            display: flex;
+            align-items: center;
+            background: var(--card-bg);
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+
+        .rank-num {
+            font-size: 1.2rem;
+            font-weight: 800;
+            width: 30px;
+            color: var(--text-sub);
+            text-align: center;
+        }
+
+        .rank-num.top-1 { color: #ff4757; font-size: 1.5rem; }
+        .rank-num.top-2 { color: #ffa502; }
+        .rank-num.top-3 { color: #eccc68; }
+
+        .rank-info {
+            flex: 1;
+            margin-left: 10px;
+        }
+
+        .rank-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .rank-views {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+        }
+
+        /* Categories */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .category-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .category-item {
+            background: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+
+        .category-item:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .category-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .category-name {
+            font-weight: 600;
+        }
+
+        /* Features */
+        .features {
+            background: white;
+            padding: 40px 20px;
+            margin-top: 40px;
+        }
+
+        .features-grid {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .feature-item h3 {
+            margin: 15px 0 10px;
+            font-size: 1.2rem;
+        }
+
+        .feature-item p {
+            color: var(--text-sub);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: #ced6e0;
+            padding: 60px 20px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Fixes */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>
+                黄果短剧<span>App</span>
+            </a>
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">热播榜</a></li>
+                    <li><a href="#">最新更新</a></li>
+                    <li><a href="#">分类大全</a></li>
+                    <li><a href="#">我的收藏</a></li>
+                </ul>
+            </nav>
+            <div class="search-box">
+                <input type="text" placeholder="搜索短剧名称...">
+                <button>🔍</button>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>短剧快看，精彩不停</h1>
+            <p>汇聚全网最热门短剧资源，高清免费，随时随地想看就看</p>
+            <div class="hero-tags">
+                <span class="tag">🔥 都市逆袭</span>
+                <span class="tag">💕 言情甜宠</span>
+                <span class="tag">🕵️ 悬疑推理</span>
+                <span class="tag">👑 古装宫斗</span>
+            </div>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">立即观看</a>
+                <a href="#" class="btn btn-secondary">下载App</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="content-wrapper">
+            
+            <!-- Left Column: Content Area -->
+            <main>
+                <!-- Category Navigation -->
+                <div class="category-grid">
+                    <a href="#" class="category-item">
+                        <span class="category-icon">🎬</span>
+                        <span class="category-name">全部</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <span class="category-icon">👨‍💼</span>
+                        <span class="category-name">都市职场</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <span class="category-icon">🧚‍♀️</span>
+                        <span class="category-name">古装穿越</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <span class="category-icon">👻</span>
+                        <span class="category-name">恐怖惊悚</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <span class="category-icon">🧑‍🤝‍🧑</span>
+                        <span class="category-name">家庭伦理</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <span class="category-icon">👾</span>
+                        <span class="category-name">科幻未来</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <span class="category-icon">👩‍⚕️</span>
+                        <span class="category-name">医疗急救</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <span class="category-icon">👑</span>
+                        <span class="category-name">帝王将相</span>
+                    </a>
+                </div>
+
+                <!-- Hot Section -->
+                <section class="section-header">
+                    <h2 class="section-title">本周热门推荐</h2>
+                    <a href="#" class="section-more">查看更多 ></a>
+                </section>
+
+                <div class="grid-layout">
+                    <!-- Card 1 -->
+                    <article class="card">
+                        <div style="position: relative;">
+                            <img src="https://picsum.photos/seed/drama1/300/200" alt="短剧封面" class="card-img">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span>更新至 85 集</span>
+                                <span>9.8分</span>
+                            </div>
+                            <h3 class="card-title">豪门总裁的替身前妻</h3>
+                            <div class="card-tags">
+                                <span class="mini-tag">都市</span>
+                                <span class="mini-tag">复仇</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="card">
+                        <div style="position: relative;">
+                            <img src="https://picsum.photos/seed/drama2/300/200" alt="短剧封面" class="card-img">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span>更新至 120 集</span>
+                                <span>9.5分</span>
+                            </div>
+                            <h3 class="card-title">神医下山：绝世高手</h3>
+                            <div class="card-tags">
+                                <span class="mini-tag">动作</span>
+                                <span class="mini-tag">热血</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 3 -->
+                    <article class="card">
+                        <div style="position: relative;">
+                            <img src="https://picsum.photos/seed/drama3/300/200" alt="短剧封面" class="card-img">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span>更新至 45 集</span>
+                                <span>9.6分</span>
+                            </div>
+                            <h3 class="card-title">闪婚蜜爱：老公太宠了</h3>
+                            <div class="card-tags">
+                                <span class="mini-tag">甜宠</span>
+                                <span class="mini-tag">豪门</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 4 -->
+                    <article class="card">
+                        <div style="position: relative;">
+                            <img src="https://picsum.photos/seed/drama4/300/200" alt="短剧封面" class="card-img">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span>更新至 90 集</span>
+                                <span>9.2分</span>
+                            </div>
+                            <h3 class="card-title">我在精神病院学斩神</h3>
+                            <div class="card-tags">
+                                <span class="mini-tag">奇幻</span>
+                                <span class="mini-tag">悬疑</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Fresh Updates Section -->
+                <section class="section-header" style="margin-top: 50px;">
+                    <h2 class="section-title">最新更新</h2>
+                    <a href="#" class="section-more">查看更多 ></a>
+                </section>
+
+                <div class="grid-layout">
+                    <article class="card">
+                        <div style="position: relative;">
+                            <img src="https://picsum.photos/seed/drama5/300/200" alt="短剧封面" class="card-img">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span>更新至 12 集</span>
+                                <span>刚刚</span>
+                            </div>
+                            <h3 class="card-title">重回九零：千金归来</h3>
+                            <div class="card-tags">
+                                <span class="mini-tag">年代</span>
+                                <span class="mini-tag">逆袭</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div style="position: relative;">
+                            <img src="https://picsum.photos/seed/drama6/300/200" alt="短剧封面" class="card-img">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span>更新至 30 集</span>
+                                <span>1小时前</span>
+                            </div>
+                            <h3 class="card-title">厉总，夫人又闹离婚了</h3>
+                            <div class="card-tags">
+                                <span class="mini-tag">都市</span>
+                                <span class="mini-tag">追妻</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div style="position: relative;">
+                            <img src="https://picsum.photos/seed/drama7/300/200" alt="短剧封面" class="card-img">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span>更新至 8 集</span>
+                                <span>3小时前</span>
+                            </div>
+                            <h3 class="card-title">穿越古代当暴君</h3>
+                            <div class="card-tags">
+                                <span class="mini-tag">穿越</span>
+                                <span class="mini-tag">历史</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div style="position: relative;">
+                            <img src="https://picsum.photos/seed/drama8/300/200" alt="短剧封面" class="card-img">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span>更新至 55 集</span>
+                                <span>5小时前</span>
+                            </div>
+                            <h3 class="card-title">御膳房的小厨娘</h3>
+                            <div class="card-tags">
+                                <span class="mini-tag">古装</span>
+                                <span class="mini-tag">美食</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </main>
+
+            <!-- Right Column: Sidebar -->
+            <aside>
+                <!-- Ranking -->
+                <div style="background: white; padding: 20px; border-radius: 12px; margin-bottom: 30px; box-shadow: var(--shadow);">
+                    <h3 class="section-title" style="margin-bottom: 20px; font-size: 1.2rem;">全网播放榜</h3>
+                    <div class="ranking-list">
+                        <a href="#" class="ranking-item">
+                            <span class="rank-num top-1">1</span>
+                            <div class="rank-info">
+                                <div class="rank-title">闪婚甜妻：总裁的掌中宝</div>
+                                <div class="rank-views">5.2亿播放</div>
+                            </div>
+                        </a>
+                        <a href="#" class="ranking-item">
+                            <span class="rank-num top-2">2</span>
+                            <div class="rank-info">
+                                <div class="rank-title">龙王殿：神医下山</div>
+                                <div class="rank-views">4.8亿播放</div>
+                            </div>
+                        </a>
+                        <a href="#" class="ranking-item">
+                            <span class="rank-num top-3">3</span>
+                            <div class="rank-info">
+                                <div class="rank-title">我有一座恐怖屋</div>
+                                <div class="rank-views">4.1亿播放</div>
+                            </div>
+                        </a>
+                        <a href="#" class="ranking-item">
+                            <span class="rank-num">4</span>
+                            <div class="rank-info">
+                                <div class="rank-title">重生之都市仙尊</div>
+                                <div class="rank-views">3.9亿播放</div>
+                            </div>
+                        </a>
+                        <a href="#" class="ranking-item">
+                            <span class="rank-num">5</span>
+                            <div class="rank-info">
+                                <div class="rank-title">赘婿逆袭：开局签到万贯家财</div>
+                                <div class="rank-views">3.5亿播放</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Ad Placeholder -->
+                <div style="background: linear-gradient(45deg, #ff9f43, #ee5253); border-radius: 12px; height: 250px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; margin-bottom: 30px;">
+                    广告位招租
+                </div>
+
+                <!-- Notice -->
+                <div style="background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 15px; border-radius: 8px; font-size: 0.9rem;">
+                    <strong>温馨提示：</strong> 本站所有短剧均来自互联网，版权归原作者所有。如果侵犯了您的权益，请及时联系我们删除。
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="category-icon" style="font-size: 40px;">⚡</div>
+                <h3>极速播放</h3>
+                <p>智能选路，高清流畅，拒绝卡顿</p>
+            </div>
+            <div class="feature-item">
+                <div class="category-icon" style="font-size: 40px;">💾</div>
+                <h3>离线下载</h3>
+                <p>有网看剧，没网也能看，随时随地</p>
+            </div>
+            <div class="feature-item">
+                <div class="category-icon" style="font-size: 40px;">🎯</div>
+                <h3>精准推荐</h3>
+                <p>大数据算法，懂你所爱，猜你喜欢</p>
+            </div>
+            <div class="feature-item">
+                <div class="category-icon" style="font-size: 40px;">📱</div>
+                <h3>多端同步</h3>
+                <p>手机、平板、电脑，一键无缝切换</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>关于黄果短剧</h4>
+                <p style="font-size: 0.9rem; line-height: 1.8; color: #ced6e0;">
+                    黄果短剧致力于为用户提供最优质的短剧观看体验。我们收录了全网最热门、最精彩的短剧资源，涵盖都市、古装、悬疑、科幻等多种题材，让您的碎片时间更加精彩。
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>快速导航</h4>
+                <ul class="footer-links">
+                    <li><a href="#">首页推荐</a></li>
+                    <li><a href="#">热门榜单</a></li>
+                    <li><a href="#">最新更新</a></li>
+                    <li><a href="#">分类大全</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>热门分类</h4>
+                <ul class="footer-links">
+                    <li><a href="#">都市情感</a></li>
+                    <li><a href="#">古装宫廷</a></li>
+                    <li><a href="#">玄幻修仙</a></li>
+                    <li><a href="#">悬疑推理</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>联系我们</h4>
+                <ul class="footer-links">
+                    <li><a href="#">用户反馈</a></li>
+                    <li><a href="#">版权声明</a></li>
+                    <li><a href="#">加入我们</a></li>
+                    <li><a href="#">客服中心</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 黄果短剧 版权所有 | 本站内容仅供学习交流使用</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const nav = document.getElementById('navMenu');
+            nav.classList.toggle('active');
+        }
+
+        // Simple Interaction for Search Button
+        document.querySelector('.search-box button').addEventListener('click', function() {
+            const input = document.querySelector('.search-box input');
+            if(input.value.trim() !== "") {
+                alert("正在搜索: " + input.value);
+            }
+        });
+
+        // Card Click Simulation
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', function() {
+                // In a real app, this would navigate to the detail page
+                const title = this.querySelector('.card-title').innerText;
+                console.log("Navigating to: " + title);
+            });
+        });
+    </script>
+</body>
+                              </html>
