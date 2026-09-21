@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="艳姬-经典历史题材漫画与二次元文化聚合平台。收录经典艳姬题材作品，提供高清漫画在线阅读、剧情解析及角色图鉴，探索历史与幻想交织的女性形象。">
+    <meta name="keywords" content="艳姬, 漫画, 历史题材, 二次元, 角色图鉴">
+    <title>艳姬-经典历史题材漫画与二次元文化聚合平台</title>
+    <style>
+        :root {
+            --primary-color: #8e2de2;
+            --secondary-color: #4a00e0;
+            --accent-color: #ff0080;
+            --text-dark: #1f2937;
+            --text-gray: #4b5563;
+            --text-light: #9ca3af;
+            --bg-body: #f9fafb;
+            --bg-card: #ffffff;
+            --border-radius: 12px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-dark);
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), transparent);
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--text-light);
+            color: var(--text-dark);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            box-shadow: 0 4px 10px rgba(142, 45, 226, 0.3);
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://picsum.photos/seed/yanji/1600/900') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .tag {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            backdrop-filter: blur(4px);
+        }
+
+        /* Featured Section */
+        .featured-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-meta {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .card-desc {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #f3f4f6;
+            padding-top: 1rem;
+        }
+
+        .score {
+            color: #f59e0b;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Sidebar List */
+        .sidebar-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .sidebar-item {
+            display: flex;
+            gap: 1rem;
+            background: var(--bg-card);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.2s;
+        }
+
+        .sidebar-item:hover {
+            transform: translateX(5px);
+        }
+
+        .sidebar-img {
+            width: 80px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+
+        .sidebar-info h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .sidebar-info p {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+        }
+
+        /* Ranking Section */
+        .ranking-section {
+            margin-bottom: 4rem;
+        }
+
+        .ranking-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .ranking-tabs {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .tab {
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--text-gray);
+            background: #f3f4f6;
+            transition: all 0.2s;
+        }
+
+        .tab.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .ranking-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .rank-card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .rank-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 30px;
+            height: 30px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            z-index: 2;
+        }
+
+        .rank-1 .rank-badge { background: linear-gradient(135deg, #ffd700, #ffb700); color: #5a4a00; }
+        .rank-2 .rank-badge { background: linear-gradient(135deg, #c0c0c0, #a8a8a8); color: #333; }
+        .rank-3 .rank-badge { background: linear-gradient(135deg, #cd7f32, #b87333); color: #fff; }
+
+        .rank-card:hover .rank-badge {
+            transform: scale(1.1);
+        }
+
+        .rank-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .rank-body {
+            padding: 1rem;
+        }
+
+        .rank-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Character Section */
+        .character-section {
+            background: linear-gradient(135deg, #1f2937, #111827);
+            color: white;
+            padding: 4rem 0;
+            margin-bottom: 4rem;
+        }
+
+        .char-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .char-card {
+            text-align: center;
+            background: rgba(255,255,255,0.05);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+
+        .char-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-5px);
+        }
+
+        .char-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            border: 3px solid var(--accent-color);
+            object-fit: cover;
+        }
+
+        .char-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .char-origin {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .char-desc {
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+
+        /* Footer */
+        footer {
+            background: #f3f4f6;
+            padding: 4rem 0 2rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand p {
+            color: var(--text-gray);
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #e5e7eb;
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .featured-grid { grid-template-columns: 1fr; }
+            .header-inner { flex-direction: column; height: auto; padding: 1rem 0; gap: 1rem; }
+            nav ul { gap: 1rem; font-size: 0.9rem; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .sidebar-item { flex-direction: column; }
+            .sidebar-img { width: 100%; height: 150px; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">艳姬</a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">全部分类</a></li>
+                    <li><a href="#">最新更新</a></li>
+                    <li><a href="#">角色图鉴</a></li>
+                    <li><a href="#">排行榜</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="btn btn-outline">登录</button>
+                <button class="btn btn-primary">注册</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>历史与幻想交织的传奇</h1>
+                <p>探索那些在历史长河中留下浓墨重彩的女性形象，感受“艳姬”题材带来的独特魅力与深刻内涵。</p>
+                <div class="hero-tags">
+                    <span class="tag">历史穿越</span>
+                    <span class="tag">宫廷权谋</span>
+                    <span class="tag">唯美画风</span>
+                    <span class="tag">情感纠葛</span>
+                </div>
+                <button class="btn btn-primary" style="padding: 0.8rem 2rem; font-size: 1.1rem;">开始阅读</button>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- Featured Section -->
+            <section class="featured-grid">
+                <article class="card">
+                    <img src="https://picsum.photos/seed/yanji_hero/800/400" alt="推荐漫画封面" class="card-image">
+                    <div class="card-body">
+                        <div class="card-meta">热门推荐 · 已完结</div>
+                        <h2 class="card-title">倾城之恋：艳姬传</h2>
+                        <p class="card-desc">讲述了乱世之中，一位拥有绝世容颜与过人智谋的女子，如何在男权至上的朝堂与战场中周旋，最终左右历史走向的故事。作品融合了细腻的情感描写与宏大的战争场面，是“艳姬”题材的巅峰之作。</p>
+                        <div class="card-footer">
+                            <div class="score">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>
+                                9.8
+                            </div>
+                            <button class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.85rem;">立即阅读</button>
+                        </div>
+                    </div>
+                </article>
+
+                <aside class="sidebar-list">
+                    <div class="sidebar-item">
+                        <img src="https://picsum.photos/seed/yanji_1/100/120" alt="漫画封面" class="sidebar-img">
+                        <div class="sidebar-info">
+                            <h4>凤舞九天</h4>
+                            <p>更新至 120话 · 评分 9.5</p>
+                        </div>
+                    </div>
+                    <div class="sidebar-item">
+                        <img src="https://picsum.photos/seed/yanji_2/100/120" alt="漫画封面" class="sidebar-img">
+                        <div class="sidebar-info">
+                            <h4>红颜劫</h4>
+                            <p>更新至 85话 · 评分 9.2</p>
+                        </div>
+                    </div>
+                    <div class="sidebar-item">
+                        <img src="https://picsum.photos/seed/yanji_3/100/120" alt="漫画封面" class="sidebar-img">
+                        <div class="sidebar-info">
+                            <h4>媚骨天成</h4>
+                            <p>连载中 · 评分 8.9</p>
+                        </div>
+                    </div>
+                </aside>
+            </section>
+
+            <!-- Ranking Section -->
+            <section class="ranking-section">
+                <div class="ranking-header">
+                    <h2 class="section-title">热门榜单</h2>
+                    <div class="ranking-tabs">
+                        <div class="tab active">周榜</div>
+                        <div class="tab">月榜</div>
+                        <div class="tab">总榜</div>
+                    </div>
+                </div>
+                <div class="ranking-grid">
+                    <div class="rank-card rank-1">
+                        <span class="rank-badge">1</span>
+                        <img src="https://picsum.photos/seed/rank1/300/400" alt="封面" class="rank-img">
+                        <div class="rank-body">
+                            <h3 class="rank-title">乱世红颜录</h3>
+                            <p style="font-size: 0.8rem; color: #666;">奇幻 · 穿越</p>
+                        </div>
+                    </div>
+                    <div class="rank-card rank-2">
+                        <span class="rank-badge">2</span>
+                        <img src="https://picsum.photos/seed/rank2/300/400" alt="封面" class="rank-img">
+                        <div class="rank-body">
+                            <h3 class="rank-title">后宫·深宫怨</h3>
+                            <p style="font-size: 0.8rem; color: #666;">宫斗 · 剧情</p>
+                        </div>
+                    </div>
+                    <div class="rank-card rank-3">
+                        <span class="rank-badge">3</span>
+                        <img src="https://picsum.photos/seed/rank3/300/400" alt="封面" class="rank-img">
+                        <div class="rank-body">
+                            <h3 class="rank-title">绝代佳人</h3>
+                            <p style="font-size: 0.8rem; color: #666;">历史 · 战争</p>
+                        </div>
+                    </div>
+                    <div class="rank-card">
+                        <span class="rank-badge" style="background: #6b7280;">4</span>
+                        <img src="https://picsum.photos/seed/rank4/300/400" alt="封面" class="rank-img">
+                        <div class="rank-body">
+                            <h3 class="rank-title">媚眼如丝</h3>
+                            <p style="font-size: 0.8rem; color: #666;">言情 · 治愈</p>
+                        </div>
+                    </div>
+                    <div class="rank-card">
+                        <span class="rank-badge" style="background: #6b7280;">5</span>
+                        <img src="https://picsum.photos/seed/rank5/300/400" alt="封面" class="rank-img">
+                        <div class="rank-body">
+                            <h3 class="rank-title">江山为聘</h3>
+                            <p style="font-size: 0.8rem; color: #666;">权谋 · 沉浸</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Character Section -->
+            <section class="character-section">
+                <div class="container">
+                    <h2 class="section-title" style="color: white; border-color: rgba(255,255,255,0.2);">经典角色</h2>
+                    <div class="char-grid">
+                        <div class="char-card">
+                            <img src="https://picsum.photos/seed/char1/200/200" alt="角色" class="char-avatar">
+                            <h3 class="char-name">苏妲己</h3>
+                            <span class="char-origin">商朝 · 神话原型</span>
+                            <p class="char-desc">传说中祸乱朝纲的妖妃，但在不同解读中也被赋予了悲剧色彩与反抗精神。</p>
+                        </div>
+                        <div class="char-card">
+                            <img src="https://picsum.photos/seed/char2/200/200" alt="角色" class="char-avatar">
+                            <h3 class="char-name">王昭君</h3>
+                            <span class="char-origin">汉朝 · 和亲使者</span>
+                            <p class="char-desc">以柔弱之躯承载家国重任，用智慧和勇气平息边疆战火的传奇女性。</p>
+                        </div>
+                        <div class="char-card">
+                            <img src="https://picsum.photos/seed/char3/200/200" alt="角色" class="char-avatar">
+                            <h3 class="char-name">杨玉环</h3>
+                            <span class="char-origin">唐朝 · 美人</span>
+                            <p class="char-desc">盛唐气象的象征，其与李隆基的爱情故事流传千古，是极致美学的代名词。</p>
+                        </div>
+                        <div class="char-card">
+                            <img src="https://picsum.photos/seed/char4/200/200" alt="角色" class="char-avatar">
+                            <h3 class="char-name">赵飞燕</h3>
+                            <span class="char-origin">汉朝 · 宫廷舞者</span>
+                            <p class="char-desc">身轻如燕，才华横溢，在权力的漩涡中苦苦挣扎，最终香消玉殒的悲剧人物。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">艳姬</a>
+                    <p>专注于“艳姬”题材的漫画与二次元文化聚合平台。提供高清漫画阅读、角色图鉴及剧情解析，带您领略历史长河中那些惊艳时光的女性形象。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>网站导航</h4>
+                    <ul>
+                        <li><a href="#">首页推荐</a></li>
+                        <li><a href="#">最新连载</a></li>
+                        <li><a href="#">分类浏览</a></li>
+                        <li><a href="#">排行榜</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>热门分类</h4>
+                    <ul>
+                        <li><a href="#">历史穿越</a></li>
+                        <li><a href="#">宫廷权谋</a></li>
+                        <li><a href="#">唯美言情</a></li>
+                        <li><a href="#">架空历史</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#">平台介绍</a></li>
+                        <li><a href="#">版权声明</a></li>
+                        <li><a href="#">联系合作</a></li>
+                        <li><a href="#">用户反馈</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 艳姬漫画网 版权所有. 本站内容仅供学习交流，请勿用于商业用途。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</body>
+                              </html>
