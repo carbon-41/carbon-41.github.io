@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>版主 - 社区管理员权威指南与实战手册</title>
+    <meta name="description" content="版主 - 本站为您提供社区版主管理规范、版主选拔标准、违规处理流程及高效运营技巧。为社区管理者提供权威的执行标准与经验分享。">
+    <meta name="keywords" content="版主, 社区管理, 版主选拔, 违规处理, 运营技巧">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --secondary-color: #64748b;
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --radius: 8px;
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgb(0 0 0 / 0.02);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .btn-login {
+            padding: 8px 16px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: var(--radius);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .btn-login:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Main Content Grid */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 32px;
+            margin-top: -40px;
+            padding-bottom: 40px;
+        }
+
+        /* Card Styles */
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 12px;
+        }
+
+        /* Article List */
+        .article-item {
+            display: flex;
+            gap: 16px;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .article-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        .article-icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            background-color: #eff6ff;
+            color: var(--primary-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .article-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+
+        .article-content h3 a:hover {
+            color: var(--primary-color);
+        }
+
+        .article-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            gap: 12px;
+        }
+
+        /* Guide Steps */
+        .step-list {
+            counter-reset: step;
+        }
+
+        .step-item {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 24px;
+        }
+
+        .step-item::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 28px;
+            height: 28px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .step-item h4 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .step-item p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Status Bar */
+        .status-bar {
+            display: flex;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .badge-success { background: #d1fae5; color: #065f46; }
+        .badge-warning { background: #fef3c7; color: #92400e; }
+        .badge-danger { background: #fee2e2; color: #991b1b; }
+
+        /* Sidebar */
+        .sidebar-widget {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 24px;
+        }
+
+        .widget-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .checklist-item input[type="checkbox"] {
+            margin-top: 4px;
+            accent-color: var(--primary-color);
+        }
+
+        /* FAQ */
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 0;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .faq-answer {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+
+        .faq-item:not(.active) .faq-question::after {
+            content: '+';
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1e293b;
+            color: #94a3b8;
+            padding: 40px 0;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            margin-left: 20px;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none; /* Simplified for mobile */
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                版主管理
+            </div>
+            <nav class="nav-links">
+                <a href="#" class="active">首页</a>
+                <a href="#">职责规范</a>
+                <a href="#">工具箱</a>
+                <a href="#">社区案例</a>
+            </nav>
+            <a href="#" class="btn-login">申请版主</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>打造健康有序的社区环境</h1>
+                <p>版主是社区治理的核心力量。掌握科学的审核标准、高效的沟通技巧与违规处理流程，让您的管理之路更加从容。</p>
+                <div class="hero-tags">
+                    <span class="tag">#内容审核</span>
+                    <span class="tag">#舆情引导</span>
+                    <span class="tag">#冲突解决</span>
+                    <span class="tag">#规则制定</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="container main-grid">
+            <!-- Left Column: Content -->
+            <div class="content-area">
+                
+                <!-- Core Responsibilities -->
+                <section>
+                    <div class="card">
+                        <h2 class="section-title">版主核心职责</h2>
+                        <div class="step-list">
+                            <div class="step-item">
+                                <h4>日常巡查与维护</h4>
+                                <p>实时监控社区动态，及时发现并处理垃圾广告、水贴及恶意灌水行为，保持社区内容的纯净度。</p>
+                            </div>
+                            <div class="step-item">
+                                <h4>内容审核与引导</h4>
+                                <p>依据社区公约审核用户发布的内容，确保符合法律法规及平台规定；对争议话题进行客观引导，避免矛盾激化。</p>
+                            </div>
+                            <div class="step-item">
+                                <h4>用户互动与反馈</h4>
+                                <p>积极回应用户的投诉与建议，建立良好的沟通渠道，处理用户间的纠纷，维护社区和谐氛围。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Guidelines List -->
+                    <div class="card">
+                        <h2 class="section-title">常见违规类型处理指南</h2>
+                        <div class="article-list">
+                            <article class="article-item">
+                                <div class="article-icon">🚫</div>
+                                <div class="article-content">
+                                    <h3><a href="#">发布违法信息处理流程</a></h3>
+                                    <p>遇到涉及政治、暴力或色情内容，应立即删除并上报管理员，同时保留证据。</p>
+                                    <div class="status-bar">
+                                        <span class="status-badge badge-danger">紧急处理</span>
+                                        <span class="status-badge badge-warning">需上报</span>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="article-item">
+                                <div class="article-icon">📢</div>
+                                <div class="article-content">
+                                    <h3><a href="#">商业广告与引流规范</a></h3>
+                                    <p>对于未经授权的推广信息，应进行警告或删除。对于正规但违规的广告，需按平台广告位规则处理。</p>
+                                    <div class="status-bar">
+                                        <span class="status-badge badge-warning">常规处理</span>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="article-item">
+                                <div class="article-icon">⚔️</div>
+                                <div class="article-content">
+                                    <h3><a href="#">人身攻击与骂战处理</a></h3>
+                                    <p>切断骂战源头，对参与互骂的双方进行禁言处理，并发布公告提醒用户文明发言。</p>
+                                    <div class="status-bar">
+                                        <span class="status-badge badge-success">维护秩序</span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- FAQ Section -->
+                <section>
+                    <div class="card">
+                        <h2 class="section-title">版主常见问题 (FAQ)</h2>
+                        <div class="faq-list">
+                            <div class="faq-item">
+                                <div class="faq-question">版主是否有权限封禁用户账号？</div>
+                                <div class="faq-answer">版主通常拥有禁言、删除帖子、移动帖子等权限。账号封禁（永久或临时）权限通常由高级管理员或平台后台统一控制。</div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question">遇到管理员权限不透明怎么办？</div>
+                                <div class="faq-answer">建议通过社区公示的管理层名单联系相关负责人，或通过官方反馈渠道提交申诉。</div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question">版主工作是否需要实名认证？</div>
+                                <div class="faq-answer">是的，为了确保责任主体明确，正规社区版主申请均需经过实名认证及背景审核。</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Column: Sidebar -->
+            <aside class="sidebar">
+                <!-- Apply Widget -->
+                <div class="sidebar-widget" style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color: white;">
+                    <h3 class="widget-title" style="color: white;">成为版主</h3>
+                    <p style="font-size: 0.9rem; margin-bottom: 16px; opacity: 0.9;">如果您热爱社区，具备良好的沟通能力和责任心，欢迎申请。</p>
+                    <button class="btn-login" style="background: white; color: var(--primary-color); width: 100%; border: none; cursor: pointer;">立即申请</button>
+                </div>
+
+                <!-- Checklist Widget -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">任职自查清单</h3>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="c1">
+                        <label for="c1">了解并熟知社区公约</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="c2">
+                        <label for="c2">具备良好的耐心与情绪控制能力</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="c3">
+                        <label for="c3">能够处理突发争议事件</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="c4">
+                        <label for="c4">保证每日有固定时间进行巡查</label>
+                    </div>
+                </div>
+
+                <!-- Hot Topics -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">热门讨论</h3>
+                    <ul style="font-size: 0.9rem;">
+                        <li style="margin-bottom: 12px;"><a href="#">新版主入职培训手册 v2.0</a></li>
+                        <li style="margin-bottom: 12px;"><a href="#">如何优雅地处理恶意举报？</a></li>
+                        <li style="margin-bottom: 12px;"><a href="#">社区活动策划与执行方案</a></li>
+                        <li><a href="#">2023年社区治理最佳实践分享</a></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div>
+                <strong>版主管理</strong> &copy; 2023 社区服务中心. All rights reserved.
+            </div>
+            <div class="footer-links">
+                <a href="#">关于我们</a>
+                <a href="#">联系版主</a>
+                <a href="#">隐私政策</a>
+                <a href="#">免责声明</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple FAQ Toggle Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                item.querySelector('.faq-question').addEventListener('click', () => {
+                    // Close others
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // Toggle current
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
